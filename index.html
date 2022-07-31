@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>migo - My incredible game organizer</title>
+    <title>M.I.G.O - My Incredible Game Organizer</title>
   </head>
 
   <body>
@@ -19,19 +19,9 @@
 
       <form action="https://forms.gle/kTBm4LMgKwCNmmD18">
         <div class="info">
-          <h1>Organize-se com o MIGO</h1>
-          <p>
-            O MIGO está sendo desenvolvido para te ajudar a organizar todos os
-            seus jogos. Até aqueles que você ainda nem tirou da caixa.
-          </p>
-
-          <p>
-            <b
-              >Colabore respondendo à pesquisa e nos ajude a criar um app ainda
-              melhor para todes da comunidade gamer.</b
-            >
-          </p>
-          <input type="submit" value="Responda a pesquisa" class="enviar" />
+          <h1></h1>
+          <div class="body"></div>
+          <button type="submit" class="submit"></button>
         </div>
       </form>
 
@@ -44,11 +34,20 @@
   <footer>
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700;600;500&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="https://use.typekit.net/wtg5pwx.css" />
+
+    <script>
+      let url =
+        navigator.language == "pt-BR" ? "/lang/pt-BR.json" : "/lang/en-US.json";
+
+      fetch(url).then(async (res) => {
+        if (res.status == 200) {
+          const strings = await res.json();
+          document.querySelector('h1').innerText = strings.title;
+          document.querySelector('.body').innerHTML = strings.body;
+          document.querySelector('button').innerText = strings.research;
+        }
+      });
+    </script>
   </footer>
 </html>
